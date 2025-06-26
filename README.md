@@ -1,12 +1,12 @@
 # Error Mitigation on Quantum Dynamics using Pauli Propagation
 
-This repository is the result of a project conducted by Julia Gerecke and Julia Guignon in Pr. Zoë Holmes' lab at EPFL. Julia Gerecke completed her specialization semester (30 ECTS), while Julia Guignon was working on her Physics Project II (8 ECTS). The project was supervised by Manuel Rudolph and Tyson Ray Jones. 
+This repository is the result of a project conducted by Julia Gerecke and Julia Guignon in Professor Zoë Holmes' lab at EPFL. Julia Gerecke completed her specialization semester (30 ECTS), while Julia Guignon was working on her Physics Project II (8 ECTS). Manuel Rudolph and Tyson Jones supervised the project. 
 
 With this repo, you can perform error mitigation using the classical simulation library $`\texttt{PauliPropagation.jl}`$ in Julia. The central implemented error mitigation schemes include:
 
 - Zero Noise Extrapolation (ZNE)
 - Clifford Data Regression (CDR)
-- variable noise CDR (vnCDR)
+- Variable noise CDR (vnCDR)
 - Clifford Perturbation Approximation (CPA) and Clifford Perturbation Data Regression- ZNE (CPDR-ZNE)
 
 To gain an overview of the concept of error mitigation for trotterized circuits, refer to the $`\texttt{introduction-example-error-mitigation.ipynb}`$.
