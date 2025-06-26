@@ -1,6 +1,6 @@
 include("pp-em.jl")
 
-### This file runs in roughly 2 min on my laptop with the current truncation coefficients. (min_abs_coeff, min_abs_coeff_noisy, max_weight = 1e-4,1e-4,8)
+### This file runs in roughly 2 min on my laptop with the current truncation coefficients (min_abs_coeff, min_abs_coeff_noisy, max_weight = 1e-4,1e-4,8).
 ### DISCLAIMER: Be midful when lowering the truncation levels, your memory will quickly saturate.
 
 function IBM_utility_exp_4b_all()
@@ -125,8 +125,9 @@ function IBM_utility_exp_4b_all()
     scatter!(mixed_angles, collect_cdr, label=L"\textrm{CDR\ correction}", color="lightgreen", linewidth=3,ms=6, marker=:o, alpha=0.7)
     # ZNE
     scatter!(mixed_angles, collect_zne, label=L"\textrm{ZNE\ correction}", color="lightblue",ms=6, marker=:o, alpha=0.7)
-    # vnCDR
-    scatter!(mixed_angles, collect_vncd, label=L"\textrm{vnCDR\ correction}", color="orange",ms=6, marker=:o, alpha=0.7)
+
+    # vnCDR exponential (this can lie outside the range of reasonable values [0,1])
+    #scatter!(mixed_angles, collect_vncd, label=L"\textrm{vnCDR\ exp. correction}", color="orange",ms=6, marker=:o, alpha=0.7)
     # vnCDR linear
     scatter!(mixed_angles, collect_vncd_lin, label=L"\textrm{vnCDR\ linear\ correction}", color="purple",ms=6, marker=:o, alpha=0.7)
     
