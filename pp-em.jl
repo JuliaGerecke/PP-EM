@@ -148,7 +148,7 @@ function define_thetas(circuit, dt, J=2.0, h=1.0, U=1.0)
     return thetas
 end 
 
-function trotter_time_evolution(nl, layer, observable, thetas; noise_kind="none", min_abs_coeff=0.0, max_weight = Inf, noise_level = 1.0, depol_strength=0.01, dephase_strength=0.01)
+function trotter_time_evolution(nl, layer, observable, thetas; noise_kind="none", min_abs_coeff=0.0, max_weight = Inf, noise_level = 1.0, depol_strength=0.02, dephase_strength=0.02)
 
     """
     Function that computes the time evolution of the ansatz using the first order Trotter approximation exact time evolution operator.
@@ -365,7 +365,7 @@ function training_circuit_generation_strict_perturbation(layer, dt, J, h, angle_
     return training_thetas_list
 end
 
-function training_trotter_time_evolution(nl, layer, observable, training_thetas::Vector{Vector{Float64}}; noise_kind="none", min_abs_coeff=0.0, max_weight = Inf, noise_level = 1.0, depol_strength=0.01, dephase_strength=0.01)
+function training_trotter_time_evolution(nl, layer, observable, training_thetas::Vector{Vector{Float64}}; noise_kind="none", min_abs_coeff=0.0, max_weight = Inf, noise_level = 1.0, depol_strength=0.02, dephase_strength=0.02)
    
     """
     Function that computes the time evolution of the ansatz using the first order Trotter approximation exact time evolution operator.
@@ -385,7 +385,7 @@ end
 
 
 ######### ZNE isolated implementation ##########
-function zne_time_evolution(nl, layer, observable, dt, J, h, U=0.0; noise_kind="noiseless", min_abs_coeff=0.0, max_weight = Inf, noise_levels = [1,1.5,2.0], depol_strength=0.01, dephase_strength=0.01)
+function zne_time_evolution(nl, layer, observable, dt, J, h, U=0.0; noise_kind="noiseless", min_abs_coeff=0.0, max_weight = Inf, noise_levels = [1,1.5,2.0], depol_strength=0.02, dephase_strength=0.02)
 
     """
     Function that computes the time evolution of the ansatz using the first order Trotter approximation exact time evolution operator at different noise levels.
@@ -480,7 +480,7 @@ end
 
 ###### vnCDR (ZNE and CDR combined) ##########
 
-function vnCDR_training_trotter_time_evolution(nl, layer, observable, training_thetas::Vector{Vector{Float64}}; noise_kind="none", min_abs_coeff=0.0, max_weight=Inf, noise_levels=[1, 1.5,2.0], depol_strength=0.01, dephase_strength=0.01)
+function vnCDR_training_trotter_time_evolution(nl, layer, observable, training_thetas::Vector{Vector{Float64}}; noise_kind="none", min_abs_coeff=0.0, max_weight=Inf, noise_levels=[1, 1.5,2.0], depol_strength=0.02, dephase_strength=0.02)
     
     """
     Function that computes the training data for several noise levels.
@@ -732,8 +732,8 @@ function full_run_all_methods(nq, nl, topology, layer, J, h, dt,
     training_set=nothing,
     observable=nothing,
     num_samples::Int=10,
-    depol_strength::Float64=0.01,
-    dephase_strength::Float64=0.01,
+    depol_strength::Float64=0.02,
+    dephase_strength::Float64=0.02,
     min_abs_coeff_target::Float64=0.0,
     noise_levels::Vector{Float64}=[1.0,1.5,2.0],
     lambda::Float64=0.0,
