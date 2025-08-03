@@ -196,19 +196,19 @@ end
 
 function full_noise(psum::PauliSum, p::Float64, q::Float64, noise_level::Float64=1.0)
     for (pstr, coeff) in psum
-        set!(psum, pstr, coeff*(1-noise_level*(4/3)*p)^countweight(pstr)*(1-noise_level*2*q)^countxy(pstr))
+        set!(psum, pstr, coeff*(1-noise_level*p)^countweight(pstr)*(1-noise_level*q)^countxy(pstr))
     end
 end
 
 function depol_noise(psum::PauliSum, p::Float64, noise_level::Float64=1.0)
     for (pstr, coeff) in psum
-        set!(psum, pstr, coeff*(1-noise_level*(4/3)*p)^countweight(pstr))
+        set!(psum, pstr, coeff*(1-noise_level*p)^countweight(pstr))
     end
 end
 
 function dephase_noise(psum::PauliSum, q::Float64, noise_level::Float64=1.0)
     for (pstr, coeff) in psum
-        set!(psum, pstr, coeff*(1-noise_level*2*q)^countxy(pstr))
+        set!(psum, pstr, coeff*(1-noise_level*q)^countxy(pstr))
     end
 end
 
